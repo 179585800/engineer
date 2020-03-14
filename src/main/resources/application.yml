@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /engineer
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://39.100.76.120:3306/engineer?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+
