@@ -1,7 +1,9 @@
 package com.wxw.engineer;
 
+import com.wxw.engineer.model.Audience;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -10,9 +12,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class EngineerApplicationTests
 {
 
+    @Autowired
+    Audience a;
     @Test
     public void contextLoads()
     {
     }
+    @Test
+    public void jwt()
+    {
 
+//        String token=JwtTokenUtil.createJWT("122","wxw","11",a);
+//        System.out.println(token);
+    }
 }

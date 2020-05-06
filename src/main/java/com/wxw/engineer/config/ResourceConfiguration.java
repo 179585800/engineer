@@ -1,3 +1,4 @@
+/*
 package com.wxw.engineer.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,8 @@ public class ResourceConfiguration extends ResourceServerConfigurerAdapter
 
     }
 
-  /*  @Bean
+  */
+/*  @Bean
     public TokenStore tokenStores() {
         //return new RedisTokenStore(connectionFactory);
         //return new InMemoryTokenStore();
@@ -71,7 +73,8 @@ public class ResourceConfiguration extends ResourceServerConfigurerAdapter
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey("123");
         return converter;
-    }*/
+    }*//*
+
 
     @Bean
     public ResourceServerTokenServices defaultTokenServices()
@@ -86,3 +89,4 @@ public class ResourceConfiguration extends ResourceServerConfigurerAdapter
     }
 
 }
+*/

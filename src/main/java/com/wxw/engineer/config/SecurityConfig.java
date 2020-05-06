@@ -1,3 +1,4 @@
+/*
 package com.wxw.engineer.config;
 
 import com.wxw.engineer.config.service.MyPasswordEncoder;
@@ -14,9 +15,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+*/
 /**
  *
- */
+ *//*
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter
@@ -35,9 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
         return new MyPasswordEncoder();
     }
 
-    /**
+    */
+/**
      * 用户认证
-     */
+     *//*
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception
     {
@@ -48,7 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 //                .withUser("1").password(new BCryptPasswordEncoder().encode("123456")).authorities("ROLE_USER");
     }
 
-    /**
+    */
+/**
      * 1:
      * 请求授权:
      * spring security 使用以下匹配器来匹配请求路劲：
@@ -61,14 +67,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
      * loginPage()方法定制登录页面访问地址
      * defaultSuccessUrl()登录成功后转向的页面
      * permitAll()
-     */
+     *//*
+
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-       /* http.requestMatchers().antMatchers("/oauth/**")
+       */
+/* http.requestMatchers().antMatchers("/oauth/**")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/oauth/**").authenticated();*/
+                .antMatchers("/oauth/**").authenticated();*//*
+
         http.requestMatchers()
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
@@ -102,12 +111,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
         web.ignoring().antMatchers("/js/**", "/css/**", "/image/**");
     }
 
-    /**
+    */
+/**
      * 密码模式下必须注入的bean authenticationManagerBean
      * 认证是由 AuthenticationManager 来管理的，
      * 但是真正进行认证的是 AuthenticationManager 中定义的AuthenticationProvider。
      * AuthenticationManager 中可以定义有多个 AuthenticationProvider
-     */
+     *//*
+
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception
@@ -115,3 +126,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
         return super.authenticationManagerBean();
     }
 }
+*/

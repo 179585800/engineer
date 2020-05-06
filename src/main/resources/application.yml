@@ -1,8 +1,38 @@
+
 server:
-  port: 8080
+  port: 8088
   servlet:
     context-path: /engineer
 spring:
+  profiles:
+    active: dev
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/engineer?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+mybatis:
+  type-aliases-package: com.wxw.engineer.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+
+##jwt配置
+audience:
+  # 代表这个JWT的接收对象,存入audience
+  clientId: 098f6bcd4621d373cade4e832627b4f6
+  # 密钥, 经过Base64加密, 可自行替换
+  base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+  # JWT的签发主体，存入issuer
+  name: wxw
+  # 过期时间，时间戳
+  expiresSecond: 172800
+---
+spring:
+  profiles: pro
   datasource:
     username: root
     password: 123456
@@ -10,11 +40,24 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
   devtools:
     restart:
       enabled: false
     livereload:
-      enabled: false
+      enabled: true
 
+logging:
+  file: /log/engineerLogFile.log
+  level:
+    root: info
+    com:
+     wxw:
+      engineer: debug
+#server:
+#  ssl:
+#    enabled: true
+#    key-store: classpath:2837691_www.haogoods.top.pfx
+#    key-store-type: PKCS12
+#    key-store-password: z088q47r

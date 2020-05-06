@@ -18,8 +18,7 @@ import java.math.BigDecimal;
  */
 
 @Data
-@Entity
-@Table(name = "workers")
+
 public class Workers extends BaseEntity implements Serializable
 {
 
@@ -38,11 +37,14 @@ public class Workers extends BaseEntity implements Serializable
     @Column(name = "status")
     private String status;
 
+    private String workLocation;
+
     /**
      * 工种
      */
     @Column(name = "category")
 
+    private String locationName;
     private String category;
     @Transient
     private String text;

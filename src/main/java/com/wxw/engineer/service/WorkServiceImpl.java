@@ -1,7 +1,8 @@
 package com.wxw.engineer.service;
 
-import com.wxw.engineer.dao.WorkRepository;
 import com.wxw.engineer.entity.Workers;
+import com.wxw.engineer.mapper.UserMapper;
+import com.wxw.engineer.mapper.WorkerMapper;
 import com.wxw.engineer.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,30 +16,22 @@ import java.util.Optional;
 public class WorkServiceImpl
 {
     @Autowired
-    private WorkRepository workRepository;
-
+    private WorkerMapper workerMapper;
     public List<Workers> findAllByUserId(String userId)
     {
 
-        return workRepository.findAllByUserIdOrderByStatusDesc(userId);
+        return workerMapper.findAllByUserId(userId);
     }
 
     public Workers findAllById(String id)
     {
-        Optional optional = workRepository.findById(Long.valueOf(id));
-        if (optional.isPresent())
-        {
-            return (Workers) optional.get();
-        }
-        else
-        {
-            return null;
-        }
+        Workers workers = workerMapper.findById(Long.valueOf(id));
+        return workers;
     }
 
     public Workers findAllByName(String name, String userId)
     {
-        List<Workers> list = workRepository.findByNameAndUserId(name, userId);
+        List<Workers> list = workerMapper.findByNameAndUserId(name, userId);
         if (list.size() > 0)
         {
             return (Workers) list.get(0);
@@ -55,12 +48,12 @@ public class WorkServiceImpl
         String userId = UserUtil.getUserId();
         if (workers.getId() != null)
         {
-            workRepository.updateWorker(workers.getId(), workers.getName(), workers.getCategory(), workers.getSalary(), workers.getStatus());
+            workerMapper.updateWorker(workers);
         }
         else
         {
             workers.setUserId(userId);
-            workRepository.save(workers);
+            workerMapper.save(workers);
         }
         return new Workers();
     }

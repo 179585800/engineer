@@ -1,3 +1,4 @@
+/*
 package com.wxw.engineer.config;
 
 import com.alibaba.fastjson.JSON;
@@ -21,24 +22,30 @@ public class MyAuthenticationProvider extends DaoAuthenticationProvider
 {
 
 
-    /**
+    */
+/**
      * 规则校验
-     */
+     *//*
+
     @Resource(name = "passwordService")
     private PasswordService passwordService;
 
 //    protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
 
     // 构造函数中注入
-    /*@Inject*/
+    */
+/*@Inject*//*
+
     public MyAuthenticationProvider(UserServiceDetailImpl userDetailsService)
     {
         this.setUserDetailsService(userDetailsService);
     }
 
-    /**
+    */
+/**
      * 自定义验证方式
-     */
+     *//*
+
     @Override
     public Authentication authenticate(Authentication authentication)
     {
@@ -67,4 +74,4 @@ public class MyAuthenticationProvider extends DaoAuthenticationProvider
         return true;
     }
 
-}
+}*/

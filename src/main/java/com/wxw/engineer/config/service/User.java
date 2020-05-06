@@ -1,17 +1,13 @@
 package com.wxw.engineer.config.service;
 
 import com.wxw.engineer.util.BaseEntity;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity(name = "user")
-public class User extends BaseEntity implements UserDetails, Serializable
+public class User extends BaseEntity
 {
 
 
@@ -22,9 +18,31 @@ public class User extends BaseEntity implements UserDetails, Serializable
     private String password;
     @Column
     private String account;
+    private String openId;
+
+    public String getOpenId()
+    {
+        return openId;
+    }
+
+    public void setOpenId(String openId)
+    {
+        this.openId = openId;
+    }
+
+    public String getSessionKey()
+    {
+        return sessionKey;
+    }
+
+    public void setSessionKey(String sessionKey)
+    {
+        this.sessionKey = sessionKey;
+    }
 
     @Transient
-    private List<GrantedAuthority> authorities;
+    private  String sessionKey;
+
 
 
     public User()
@@ -32,14 +50,10 @@ public class User extends BaseEntity implements UserDetails, Serializable
     }
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities()
-    {
-        return authorities;
-    }
 
 
-    @Override
+
+
     public String getUsername()
     {
         return username;
@@ -50,7 +64,6 @@ public class User extends BaseEntity implements UserDetails, Serializable
         this.username = username;
     }
 
-    @Override
     public String getPassword()
     {
         return password;
@@ -61,25 +74,21 @@ public class User extends BaseEntity implements UserDetails, Serializable
         this.password = password;
     }
 
-    @Override
     public boolean isAccountNonExpired()
     {
         return true;
     }
 
-    @Override
     public boolean isAccountNonLocked()
     {
         return true;
     }
 
-    @Override
     public boolean isCredentialsNonExpired()
     {
         return true;
     }
 
-    @Override
     public boolean isEnabled()
     {
         return true;

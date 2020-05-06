@@ -18,8 +18,7 @@ import java.util.Date;
  */
 
 @Data
-@Entity
-@Table(name = "work_detail")
+
 public class WorkDetail extends BaseEntity implements Serializable
 {
 
@@ -39,9 +38,11 @@ public class WorkDetail extends BaseEntity implements Serializable
      */
     @Column(name = "status")
     private String status;
-    private Date workDate;
+    private String workDate;
     @Transient
     private Long detailId;
+
+    private  String workLocation;
 
 
 }

@@ -4,7 +4,7 @@ package com.wxw.engineer.util;
 import lombok.extern.java.Log;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.util.DigestUtils;
 
 import java.io.*;
 import java.net.URL;
@@ -31,7 +31,7 @@ public class CryptoUtils
      */
     public static String encodeMD5(final byte[] bytes)
     {
-        return DigestUtils.md5Hex(bytes);
+        return DigestUtils.md5DigestAsHex(bytes);
     }
 
     /**
@@ -77,10 +77,10 @@ public class CryptoUtils
      * @param bytes an array of byte.
      * @return a {@link String} object.
      */
-    public static String encodeSHA(final byte[] bytes)
-    {
-        return DigestUtils.sha512Hex(bytes);
-    }
+//    public static String encodeSHA(final byte[] bytes)
+//    {
+//        return DigestUtils.(bytes);
+//    }
 
     /**
      * SHA加密
@@ -89,24 +89,24 @@ public class CryptoUtils
      * @param charset a {@link String} object.
      * @return a {@link String} object.
      */
-    public static String encodeSHA(final String str, final String charset)
-    {
-        if (str == null)
-        {
-            return null;
-        }
-
-        try
-        {
-            byte[] bytes = str.getBytes(charset);
-            return encodeSHA(bytes);
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            log.warning(e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
+//    public static String encodeSHA(final String str, final String charset)
+//    {
+//        if (str == null)
+//        {
+//            return null;
+//        }
+//
+//        try
+//        {
+//            byte[] bytes = str.getBytes(charset);
+//            return encodeSHA(bytes);
+//        }
+//        catch (UnsupportedEncodingException e)
+//        {
+//            log.warning(e.getMessage());
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     /**
      * SHA加密,默认utf-8
@@ -114,10 +114,10 @@ public class CryptoUtils
      * @param str a {@link String} object.
      * @return a {@link String} object.
      */
-    public static String encodeSHA(final String str)
-    {
-        return encodeSHA(str, DEFAULT_CHARSET);
-    }
+//    public static String encodeSHA(final String str)
+//    {
+//        return encodeSHA(str, DEFAULT_CHARSET);
+//    }
 
     /**
      * BASE64加密

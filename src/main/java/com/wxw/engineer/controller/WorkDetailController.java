@@ -26,18 +26,18 @@ public class WorkDetailController
     private WorkDetailServiceImpl workDetailService;
 
     @GetMapping("queryByDate")
-    public RestResponse<List<Map<String, Object>>> findAllByDateAndUserId(String createDate)
+    public RestResponse<List<Map<String, Object>>> findAllByDateAndUserId(String createDate,String workLocation)
     {
         String userId = UserUtil.getUserId();
-        List<Map<String, Object>> list = workDetailService.findByDateAndUserId(createDate, userId);
+        List<Map<String, Object>> list = workDetailService.findByDateAndUserId(createDate, userId,workLocation);
         return new RestResponse(RestStatus.OK, list, "");
     }
 
     @GetMapping("queryModByDate")
-    public RestResponse<List<Map<String, Object>>> findModByDateAndUserIdList(String createDate)
+    public RestResponse<List<Map<String, Object>>> findModByDateAndUserIdList(String createDate,String workLocation)
     {
         String userId = UserUtil.getUserId();
-        List<Map<String, Object>> list = workDetailService.findModByDateAndUserId(createDate, userId);
+        List<Map<String, Object>> list = workDetailService.findModByDateAndUserId(createDate, userId, workLocation);
         return new RestResponse(RestStatus.OK, list, "");
     }
 
@@ -48,7 +48,13 @@ public class WorkDetailController
         List<Map<String, Object>> list = workDetailService.queryTotalWorkDay(startDate, endDate, name, userId);
         return new RestResponse(RestStatus.OK, list, "");
     }
-
+    @GetMapping("queryTotalSalary")
+    public RestResponse<List<Map<String, Object>>> queryTotalSalary(String startDate, String endDate, String name)
+    {
+        String userId = UserUtil.getUserId();
+        List<Map<String, Object>> list = workDetailService.queryTotalSalary(startDate, endDate, name, userId);
+        return new RestResponse(RestStatus.OK, list, "");
+    }
     @GetMapping("queryDetailWorkDay")
     public RestResponse<List<Map<String, Object>>> queryDetailWorkDay(String startDate, String endDate, String name)
     {
@@ -70,9 +76,10 @@ public class WorkDetailController
 
             List<Workers> workers = json.getJSONArray("persons").toJavaList(Workers.class);
             String days = String.valueOf(json.get("days"));
+            String workLocation = String.valueOf(json.get("workLocation"));
             String workDate = String.valueOf(json.get("workDate"));
             System.out.println(prarms);
-            workDetailService.saveWorkDetail(workers, days, workDate, userId);
+            workDetailService.saveWorkDetail(workers, days, workDate, userId,workLocation);
         }
         catch (IOException e)
         {

@@ -1,8 +1,10 @@
+/*
 package com.wxw.engineer.config.service;
 
 import com.wxw.engineer.util.CryptoUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+*/
 /**
  * @author wangxw
  * @Title:
@@ -10,7 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @return
  * @throws
  * @Date 2019/10/24 15:16
- */
+ *//*
+
 public class MyPasswordEncoder implements PasswordEncoder
 {
     @Override
@@ -27,3 +30,4 @@ public class MyPasswordEncoder implements PasswordEncoder
     }
 
 }
+*/

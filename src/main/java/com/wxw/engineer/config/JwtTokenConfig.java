@@ -1,3 +1,4 @@
+/*
 package com.wxw.engineer.config;
 
 import org.springframework.context.annotation.Bean;
@@ -15,9 +16,11 @@ public class JwtTokenConfig
         return new JwtTokenStore(jwtAccessTokenConverter());
     }
 
-    /**
+    */
+/**
      * token生成处理：指定签名
-     */
+     *//*
+
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter()
     {
@@ -26,3 +29,4 @@ public class JwtTokenConfig
         return accessTokenConverter;
     }
 }
+*/
